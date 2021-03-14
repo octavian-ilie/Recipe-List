@@ -27,10 +27,10 @@ struct RecipeDetailView: View {
                     Text("Ingredients")
                         .font(.system(size: 25, weight: .medium, design: .rounded))
                         .padding(.bottom, 5)
-                    ForEach (recipe.ingredients, id: \.self) { ingredient in
+                    ForEach (recipe.ingredients) { ingredient in
                         HStack {
                             Image(systemName: "arrowtriangle.forward.fill")
-                            Text(ingredient)
+                            Text(ingredient.name)
                         }.padding(.top, 0.1)
                     }
                 }.padding([.horizontal, .bottom], 15)
