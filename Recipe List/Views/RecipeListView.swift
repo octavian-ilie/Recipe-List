@@ -30,7 +30,7 @@ struct RecipeListView: View {
                             Text(element.name)
                         }.padding(.top, 5).padding(.bottom, 5)
                     })
-            }.navigationTitle(Text("Recipes"))
+            }.navigationTitle(Text("All Recipes"))
         }
     }
 }
