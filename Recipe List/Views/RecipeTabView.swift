@@ -32,6 +32,15 @@ struct RecipeTabView: View {
                         Text("Recipes")
                     }
                 }.tag(2)
+            
+            // MARK: Settings
+            SettingsView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "gearshape")
+                        Text("Settings")
+                    }
+                }
         }
     }
 }

@@ -19,6 +19,7 @@
 		2BE5EB2A25FEB9E80014C556 /* FeaturedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5EB2925FEB9E80014C556 /* FeaturedView.swift */; };
 		2BE5EB2D25FEBA2A0014C556 /* RecipeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5EB2C25FEBA2A0014C556 /* RecipeTabView.swift */; };
 		2BE5EB3025FECC5E0014C556 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5EB2F25FECC5E0014C556 /* Ingredient.swift */; };
+		2BE5EB3325FF94F10014C556 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5EB3225FF94F10014C556 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		2BE5EB2925FEB9E80014C556 /* FeaturedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedView.swift; sourceTree = "<group>"; };
 		2BE5EB2C25FEBA2A0014C556 /* RecipeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTabView.swift; sourceTree = "<group>"; };
 		2BE5EB2F25FECC5E0014C556 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		2BE5EB3225FF94F10014C556 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,10 +94,11 @@
 		2BE5EB1425FA55FD0014C556 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2BE5EB2C25FEBA2A0014C556 /* RecipeTabView.swift */,
+				2BE5EB2925FEB9E80014C556 /* FeaturedView.swift */,
 				2B59A5E525F66EEE00071232 /* RecipeListView.swift */,
 				2BE5EB2625FA6F590014C556 /* RecipeDetailView.swift */,
-				2BE5EB2925FEB9E80014C556 /* FeaturedView.swift */,
-				2BE5EB2C25FEBA2A0014C556 /* RecipeTabView.swift */,
+				2BE5EB3225FF94F10014C556 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				2BE5EB3025FECC5E0014C556 /* Ingredient.swift in Sources */,
 				2BE5EB2725FA6F590014C556 /* RecipeDetailView.swift in Sources */,
 				2BE5EB2025FA5BDC0014C556 /* RecipeModel.swift in Sources */,
+				2BE5EB3325FF94F10014C556 /* SettingsView.swift in Sources */,
 				2B59A5E625F66EEE00071232 /* RecipeListView.swift in Sources */,
 				2BE5EB2A25FEB9E80014C556 /* FeaturedView.swift in Sources */,
 				2B59A5E425F66EEE00071232 /* Recipe_ListApp.swift in Sources */,
