@@ -13,8 +13,13 @@ struct FeaturedView: View {
     @State var recipeTitle = "Featured Recipes"
     
     var body: some View {
-        NavigationView {
-            VStack {
+        VStack (alignment: .leading, spacing: 0) {
+                
+                Text("Featured Recipes")
+                    .bold()
+                    .padding(.leading, 20)
+                    .padding(.top, 40)
+                    .font(.largeTitle)
                 
                 GeometryReader { geo in
                     TabView {
@@ -73,9 +78,8 @@ struct FeaturedView: View {
                 .padding([.horizontal, .top], 20)
                 .padding(.bottom, 40)
                 
-            }.navigationTitle("Featured Recipes")
+            }
         }
-    }
 }
 
 struct FeaturedView_Previews: PreviewProvider {

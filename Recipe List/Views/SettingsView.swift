@@ -15,23 +15,27 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             VStack (alignment: .leading) {
+                
+                Text("Settings")
+                    .bold()
+                    .padding(.top, 40)
+                    .font(.largeTitle)
         
                 VStack {
                     Toggle("Metric units", isOn: $metricUnits)
                     Toggle("Open with Featured", isOn: $featuredFirst)
                 }
-                .padding([.horizontal], 20)
                 .padding(.top, 20)
                 .toggleStyle(SwitchToggleStyle(tint: .red))
                 
                 Text("See Featured recipes first when launching the app.")
-                    .padding([.horizontal],20)
                     .font(.system(size: 12, weight: .light, design: .default))
                 
                 Spacer()
                 
             }
-            .navigationTitle("Settings")
+            .navigationBarHidden(true)
+            .padding(.horizontal, 20)
         }
     }
 }
