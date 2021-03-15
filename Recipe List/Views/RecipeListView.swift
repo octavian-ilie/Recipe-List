@@ -9,8 +9,8 @@ import SwiftUI
 
 struct RecipeListView: View {
     
-    // reference the view model
-    @ObservedObject var model = RecipeModel()
+    // populate model with data from the instance of RecipeModel passed to the RecipeTabView
+    @EnvironmentObject var model: RecipeModel
     
     var body: some View {
         NavigationView {

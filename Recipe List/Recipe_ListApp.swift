@@ -12,6 +12,8 @@ struct Recipe_ListApp: App {
     var body: some Scene {
         WindowGroup {
             RecipeTabView()
+                // create a single instance of RecipeModel and pass it down
+                .environmentObject(RecipeModel())
         }
     }
 }

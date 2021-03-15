@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct FeaturedView: View {
+    
+    @EnvironmentObject var model: RecipeModel
+    
     var body: some View {
         Text("Featured View coming soon.")
     }
