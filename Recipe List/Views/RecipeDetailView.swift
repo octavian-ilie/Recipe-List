@@ -10,10 +10,12 @@ import SwiftUI
 struct RecipeDetailView: View {
     
     var recipe: Recipe
+    @State var selectedServingSize = 2
     
     var body: some View {
         ScrollView {
             VStack (alignment: .leading) {
+                
                 // MARK: Image
                 Image(recipe.image)
                     .resizable()
@@ -21,6 +23,24 @@ struct RecipeDetailView: View {
                     .frame(maxWidth: .infinity, maxHeight: 260)
                     .clipped()
                     .padding(.vertical, 10)
+                
+                // MARK: Serving Size Picker
+                VStack (alignment: .leading) {
+                    Text("Select your serving size:")
+                    Picker("", selection: $selectedServingSize) {
+                        Text("1").tag(1)
+                        Text("2").tag(2)
+                        Text("4").tag(4)
+                        Text("6").tag(6)
+                        Text("8").tag(8)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .frame(width: UIScreen.main.bounds.width - 180)
+                    .padding(.bottom, 10)
+                }
+                .padding()
+                
+                Divider()
                 
                 // MARK: Ingredients
                 VStack (alignment: .leading) {
@@ -30,10 +50,12 @@ struct RecipeDetailView: View {
                     ForEach (recipe.ingredients) { ingredient in
                         HStack {
                             Image(systemName: "arrowtriangle.forward.fill")
-                            Text(ingredient.name)
+                            Text(RecipeModel.getPortion(ingredient: ingredient, recipeServings: recipe.servings, targetServings: selectedServingSize) + " " + ingredient.name)
                         }.padding(.top, 0.1)
                     }
-                }.padding([.horizontal, .bottom], 15)
+                }
+                .padding([.horizontal, .bottom], 15)
+                .padding(.top, 10)
                 
                 Divider()
                 
@@ -47,7 +69,7 @@ struct RecipeDetailView: View {
                             .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                             .padding(.top, 0.1)
                     }
-                }.padding(.horizontal).padding(.top, 10)
+                }.padding(.horizontal).padding(.vertical, 10)
             }
         }.navigationTitle(recipe.name)
     }
