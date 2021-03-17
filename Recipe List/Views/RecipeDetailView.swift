@@ -22,7 +22,7 @@ struct RecipeDetailView: View {
                     .scaledToFill()
                     .frame(maxWidth: .infinity, maxHeight: 260)
                     .clipped()
-                    .padding(.vertical, 10)
+                    .padding(.top, 10)
                 
                 // MARK: Serving Size Picker
                 VStack (alignment: .leading) {
@@ -36,7 +36,7 @@ struct RecipeDetailView: View {
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: UIScreen.main.bounds.width - 180)
-                    .padding(.bottom, 10)
+                    .padding(.bottom, 5)
                 }
                 .padding()
                 
@@ -45,12 +45,11 @@ struct RecipeDetailView: View {
                 // MARK: Ingredients
                 VStack (alignment: .leading) {
                     Text("Ingredients")
-                        .font(.system(size: 25, weight: .medium, design: .rounded))
+                        .font(.system(size: 25, weight: .medium, design: .default))
                         .padding(.bottom, 5)
                     ForEach (recipe.ingredients) { ingredient in
                         HStack {
-                            Image(systemName: "arrowtriangle.forward.fill")
-                            Text(RecipeModel.getPortion(ingredient: ingredient, recipeServings: recipe.servings, targetServings: selectedServingSize) + " " + ingredient.name.lowercased())
+                            Text("• " + RecipeModel.getPortion(ingredient: ingredient, recipeServings: recipe.servings, targetServings: selectedServingSize) + " " + ingredient.name.lowercased())
                         }.padding(.top, 0.1)
                     }
                 }
@@ -62,14 +61,17 @@ struct RecipeDetailView: View {
                 // MARK: Directions
                 VStack (alignment: .leading) {
                     Text("Directions")
-                        .font(.system(size: 25, weight: .medium, design: .rounded))
+                        .font(.system(size: 25, weight: .medium, design: .default))
                         .padding(.bottom, 5)
                     ForEach (0..<recipe.directions.count, id: \.self) { index in
                         Text(String(index + 1) + ". " + recipe.directions[index])
                             .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                             .padding(.top, 0.1)
                     }
-                }.padding(.horizontal).padding(.vertical, 10)
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 10)
+                .padding(.bottom, 20)
             }
         }.navigationTitle(recipe.name)
     }
