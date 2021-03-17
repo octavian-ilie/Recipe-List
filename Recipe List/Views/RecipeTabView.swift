@@ -42,11 +42,13 @@ struct RecipeTabView: View {
                     }
                 }
         }
+        .accentColor(.red)
     }
 }
 
 struct RecipeTabView_Previews: PreviewProvider {
     static var previews: some View {
         RecipeTabView()
+            .environmentObject(RecipeModel())
     }
 }

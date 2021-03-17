@@ -50,7 +50,7 @@ struct RecipeDetailView: View {
                     ForEach (recipe.ingredients) { ingredient in
                         HStack {
                             Image(systemName: "arrowtriangle.forward.fill")
-                            Text(RecipeModel.getPortion(ingredient: ingredient, recipeServings: recipe.servings, targetServings: selectedServingSize) + " " + ingredient.name)
+                            Text(RecipeModel.getPortion(ingredient: ingredient, recipeServings: recipe.servings, targetServings: selectedServingSize) + " " + ingredient.name.lowercased())
                         }.padding(.top, 0.1)
                     }
                 }
