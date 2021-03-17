@@ -17,7 +17,7 @@ struct RecipeListView: View {
             
             VStack (alignment: .leading) {
                 
-                Text("All Recipes")
+                Text("Recipes")
                     .bold()
                     .padding(.top, 40)
                     .font(.largeTitle)
@@ -37,8 +37,15 @@ struct RecipeListView: View {
                                             .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                                             .clipped()
                                             .cornerRadius(5)
-                                        Text(element.name)
-                                            .foregroundColor(.black)
+                                        VStack (alignment: .leading, spacing: 0) {
+                                            Text(element.name)
+                                                .foregroundColor(.black)
+                                                .fontWeight(.medium)
+                                                .padding(.bottom, 5)
+                                            RecipeTags(tags: element.tags)
+                                                .font(.system(size: 12, weight: .light, design: .default))
+                                                .foregroundColor(.gray)
+                                        }
                                         Spacer()
                                         Image(systemName: "chevron.right")
                                             .foregroundColor(.red)
