@@ -22,7 +22,13 @@ struct RecipeDetailView: View {
                     .scaledToFill()
                     .frame(maxWidth: .infinity, maxHeight: 260)
                     .clipped()
-                    .padding(.top, 10)
+                
+                // MARK: Recipe title
+                Text(recipe.name)
+                    .bold()
+                    .padding(.top, 20)
+                    .padding(.horizontal, 20)
+                    .font(.largeTitle)
                 
                 // MARK: Serving Size Picker
                 VStack (alignment: .leading) {
@@ -38,7 +44,9 @@ struct RecipeDetailView: View {
                     .frame(width: UIScreen.main.bounds.width - 180)
                     .padding(.bottom, 5)
                 }
-                .padding()
+                .padding(.horizontal, 20)
+                .padding(.vertical, 10)
+                .padding(.bottom, 10)
                 
                 Divider()
                 
@@ -53,8 +61,7 @@ struct RecipeDetailView: View {
                         }.padding(.top, 0.1)
                     }
                 }
-                .padding([.horizontal, .bottom], 15)
-                .padding(.top, 10)
+                .padding(.all, 20)
                 
                 Divider()
                 
@@ -69,11 +76,10 @@ struct RecipeDetailView: View {
                             .padding(.top, 0.1)
                     }
                 }
-                .padding(.horizontal)
-                .padding(.vertical, 10)
+                .padding(.all, 20)
                 .padding(.bottom, 20)
             }
-        }.navigationTitle(recipe.name)
+        }
     }
 }
 
