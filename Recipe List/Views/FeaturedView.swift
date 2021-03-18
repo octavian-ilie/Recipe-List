@@ -27,6 +27,7 @@ struct FeaturedView: View {
                 .bold()
                 .padding(.leading, 20)
                 .padding(.top, 40)
+                .padding(.bottom, -40)
                 .font(.largeTitle)
                 
             GeometryReader { geo in
@@ -58,9 +59,8 @@ struct FeaturedView: View {
                                 RecipeDetailView(recipe: model.recipes[index])
                             }
                             .buttonStyle(PlainButtonStyle())
-                            .frame(width: geo.size.width - 50, height: geo.size.height - 120, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .frame(width: geo.size.width - 40, height: geo.size.height - 120, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                             .cornerRadius(15)
-                            .shadow(color: .gray, radius: 10, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                         }
                     }
                 }
@@ -70,34 +70,63 @@ struct FeaturedView: View {
             
             VStack (alignment: .leading, spacing: 10) {
                 
-                HStack {
-                    Text("Preparation time")
-                        .font(.headline)
-                    Spacer()
-                    HStack {
-                        Text(model.recipes[tabSelectionIndex].prepTime)
-                        Image(systemName: "deskclock")
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(Color("lightRed"))
+                        .cornerRadius(15)
+                        .frame(height: 100)
+                    
+                    VStack (spacing: 2) {
+                        HStack {
+                            Image(systemName: "deskclock")
+                            Text("Total time")
+                                .font(.headline)
+                            Spacer()
+                            Text(model.recipes[tabSelectionIndex].totalTime)
+                        }
+                        .padding(.bottom, 8)
+                        
+                        HStack {
+                            Text("Preparation")
+                                .foregroundColor(Color("secondaryTextOnLightRedBg"))
+                                .font(.system(size: 14, weight: .light, design: .default))
+                                .padding(.leading, 28)
+                            Spacer()
+                            Text(model.recipes[tabSelectionIndex].prepTime)
+                                .font(.system(size: 14, weight: .light, design: .default))
+                                .foregroundColor(Color("secondaryTextOnLightRedBg"))
+                        }
+                        
+                        HStack {
+                            Text("Cooking")
+                                .foregroundColor(Color("secondaryTextOnLightRedBg"))
+                                .font(.system(size: 14, weight: .light, design: .default))
+                                .padding(.leading, 28)
+                            Spacer()
+                            Text(model.recipes[tabSelectionIndex].cookTime)
+                                .font(.system(size: 14, weight: .light, design: .default))
+                                .foregroundColor(Color("secondaryTextOnLightRedBg"))
+                        }
                     }
+                    .padding()
                 }
                 
-                HStack {
-                    Text("Cooking time")
-                        .font(.headline)
-                    Spacer()
-                    HStack {
-                        Text(model.recipes[tabSelectionIndex].cookTime)
-                        Image(systemName: "deskclock")
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(Color("lightGray"))
+                        .cornerRadius(15)
+                        .frame(height: 58)
+                    
+                    VStack (spacing: 2) {
+                        HStack {
+                            Image(systemName: "tag")
+                            Text("Tags")
+                                .font(.headline)
+                            Spacer()
+                            RecipeTags(tags: model.recipes[tabSelectionIndex].tags)
+                        }
                     }
-                }
-                
-                HStack {
-                    Text("Tags")
-                        .font(.headline)
-                    Spacer()
-                    HStack {
-                        RecipeTags(tags: model.recipes[tabSelectionIndex].tags)
-                        Image(systemName: "tag")
-                    }
+                    .padding()
                 }
                 
             }
