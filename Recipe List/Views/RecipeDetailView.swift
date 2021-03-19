@@ -14,14 +14,33 @@ struct RecipeDetailView: View {
     
     var body: some View {
         ScrollView {
+            
+            // MARK: Header image with elastic effect
+            GeometryReader { geometry in
+                VStack {
+                    if geometry.frame(in: .global).minY <= 0 {
+                        Image(recipe.image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                            // parallax effect
+                            .offset(y: geometry.frame(in: .global).minY/9)
+                            .clipped()
+                    } else {
+                        Image(recipe.image)
+                            .resizable()
+                            // image starts to zoom in when reaching max size
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: geometry.size.width, height: geometry.size.height + geometry.frame(in: .global).minY)
+                            .clipped()
+                            .offset(y: -geometry.frame(in: .global).minY)
+                    }
+                }
+            }
+            .frame(height: 260)
+            
+            // The rest of the content
             VStack (alignment: .leading) {
-                
-                // MARK: Image
-                Image(recipe.image)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(maxWidth: .infinity, maxHeight: 260)
-                    .clipped()
                 
                 // MARK: Recipe title
                 Text(recipe.name)
@@ -80,6 +99,7 @@ struct RecipeDetailView: View {
                 .padding(.bottom, 20)
             }
         }
+        .edgesIgnoringSafeArea(.top)
     }
 }
 
